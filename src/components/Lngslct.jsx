@@ -69,7 +69,6 @@ const Lngslct = () => {
                             )
                         })
                     }
-                    {/* <MenuItem value={ code }>{name}</MenuItem> */}
                     </Select>
                     <FormHelperText>Select Language</FormHelperText>
                 </FormControl>
