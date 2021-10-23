@@ -13,14 +13,14 @@ const Inputtext = ({output,setInput}) => {
                 onInput={changeInput}
                 aria-label="minimum height"
                 minRows={5}
-                placeholder="Input Text Here"
+                placeholder="Input Text Here⌨"
                 style={{ width: 300 }}
             />
             <TextareaAutosize
                 value={output}
                 aria-label="minimum height"
                 minRows={5}
-                placeholder="Output"
+                placeholder="Output🖥"
                 style={{ width: 300 }}
             />
         </>
