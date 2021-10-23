@@ -16,12 +16,14 @@ const Lngslct = () => {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
 
+    console.log(process.env);
+
     const translate = () => {
         const params = new URLSearchParams();
         params.append('q', input);
         params.append('source', from);
         params.append('target', to);
-        params.append('api_key', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+        params.append('api_key', 'process.env.REACT_APP_API_KEY');
 
         axios.post("https://libretranslate.de/translate",params,{
             headers:{
@@ -34,6 +36,17 @@ const Lngslct = () => {
         } )
     };
 
+    const getData = async () => {
+        try {
+            const res = await axios.get("https://libretranslate.com/languages",
+            {headers:{"accept":"application/json"}});
+            console.log(res.data);
+            setOptions(res.data);
+        } catch (error) {
+            console.log("my error is "+ error);
+        }
+    }
+
     const fromChange = (event) => {
         setFrom(event.target.value);
       };
@@ -42,12 +55,7 @@ const Lngslct = () => {
       };
     
     useEffect(() => {
-        async function getData() {
-            const res = await axios.get("https://libretranslate.com/languages",
-            {headers:{"accept":"application/json"}});
-            console.log(res.data);
-            setOptions(res.data);
-        } getData();
+        getData();
     }, []);
 
     return (
